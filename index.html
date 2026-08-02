@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>八ツ尾山麓庵 | 滋賀県多賀町・藤瀬の里山コミュニティ拠点</title>
+<meta name="description" content="滋賀県犬上郡多賀町・藤瀬地区。耕作放棄地の開墾から生まれた、最大10名が泊まれる一棟貸しの古民家宿・八ツ尾山麓庵。企業研修やリトリートにもご利用いただけます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f1e6;
+    --bg-alt:#eef0e3;
+    --ink:#2b2621;
+    --ink-soft:#5a5248;
+    --brown:#6b4a34;
+    --brown-dark:#40291c;
+    --gold:#9c7c3f;
+    --green:#55624a;
+    --line:#ddd3c0;
+    --white:#fffdf9;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Noto Sans JP", sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.9;
+    font-weight:300;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:"Shippori Mincho", serif;
+    font-weight:700;
+    line-height:1.5;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+  section{padding:110px 0;}
+  @media (max-width:768px){ section{padding:72px 0;} }
+
+  /* ---------- header ---------- */
+  .site-header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 32px;
+    transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+  }
+  .site-header.scrolled{
+    background:rgba(247,241,230,.94);
+    backdrop-filter:blur(6px);
+    padding:14px 32px;
+    box-shadow:0 2px 14px rgba(0,0,0,.06);
+  }
+  .logo{
+    font-family:"Shippori Mincho", serif;
+    font-size:1.25rem;
+    letter-spacing:.08em;
+    color:var(--white);
+    transition:color .4s ease;
+  }
+  .site-header.scrolled .logo{color:var(--brown-dark);}
+  .nav-links{display:flex; gap:34px; list-style:none;}
+  .nav-links a{
+    font-size:.85rem; letter-spacing:.05em; color:var(--white);
+    position:relative; padding-bottom:4px; transition:color .4s ease;
+  }
+  .site-header.scrolled .nav-links a{color:var(--ink);}
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:1px;
+    background:currentColor; transition:width .3s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-toggle{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; z-index:110;}
+  .nav-toggle span{width:24px; height:2px; background:var(--white); transition:.3s;}
+  .site-header.scrolled .nav-toggle span{background:var(--ink);}
+  @media (max-width:860px){
+    .nav-links{
+      position:fixed; inset:0; background:var(--brown-dark);
+      flex-direction:column; align-items:center; justify-content:center;
+      gap:28px; transform:translateY(-100%); transition:transform .4s ease;
+    }
+    .nav-links.open{transform:translateY(0);}
+    .nav-links a{color:var(--white); font-size:1.1rem;}
+    .nav-toggle{display:flex;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; height:100vh; min-height:560px;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; color:var(--white); overflow:hidden;
+  }
+  .hero img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    filter:brightness(.6);
+  }
+  .hero-content{position:relative; z-index:2; padding:0 20px;}
+  .hero-eyebrow{
+    font-size:.8rem; letter-spacing:.35em; text-transform:uppercase;
+    opacity:.9; margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    letter-spacing:.12em; margin-bottom:20px;
+    text-shadow:0 2px 20px rgba(0,0,0,.3);
+  }
+  .hero p{
+    font-size:clamp(.95rem, 2vw, 1.15rem); font-weight:300;
+    max-width:560px; margin:0 auto 40px; opacity:.95;
+  }
+  .btn{
+    display:inline-block; padding:15px 40px; border:1px solid var(--white);
+    font-size:.85rem; letter-spacing:.15em; border-radius:2px;
+    transition:background .3s ease, color .3s ease;
+  }
+  .btn:hover{background:var(--white); color:var(--brown-dark);}
+  .btn-solid{background:var(--gold); border-color:var(--gold); color:var(--white);}
+  .btn-solid:hover{background:#84692f; color:var(--white);}
+  .scroll-cue{
+    position:absolute; bottom:34px; left:50%; transform:translateX(-50%);
+    z-index:2; width:1px; height:50px; background:rgba(255,255,255,.6);
+    overflow:hidden;
+  }
+  .scroll-cue::after{
+    content:""; position:absolute; top:-50%; left:0; width:100%; height:50%;
+    background:var(--white); animation:scrollcue 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollcue{0%{top:-50%;} 100%{top:100%;}}
+
+  /* ---------- section heads ---------- */
+  .kicker{
+    font-size:.78rem; letter-spacing:.3em; color:var(--gold);
+    text-transform:uppercase; margin-bottom:14px; display:block;
+  }
+  .sec-head{max-width:640px; margin:0 auto 60px; text-align:center;}
+  .sec-head h2{font-size:clamp(1.6rem,3.4vw,2.3rem);}
+  .sec-head p{color:var(--ink-soft); margin-top:18px; font-size:.98rem;}
+  .lede{max-width:720px; margin:0 auto; text-align:left;}
+  .lede p{margin-bottom:1.4em; font-size:1.02rem; color:var(--ink-soft);}
+  .lede p:first-of-type::first-letter{
+    font-family:"Shippori Mincho", serif; font-size:1.8em; color:var(--brown);
+  }
+
+  /* ---------- concept timeline ---------- */
+  .bg-alt{background:var(--bg-alt);}
+  .timeline{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:70px;
+  }
+  .timeline-item{position:relative;}
+  .timeline-item .ph{aspect-ratio:4/5; overflow:hidden; border-radius:2px;}
+  .timeline-item img{width:100%; height:100%; object-fit:cover; transition:transform .6s ease;}
+  .timeline-item:hover img{transform:scale(1.06);}
+  .timeline-item .step{
+    font-family:"Shippori Mincho", serif; color:var(--gold); font-size:.8rem;
+    letter-spacing:.1em; margin:14px 0 4px;
+  }
+  .timeline-item .cap{font-size:.92rem; color:var(--ink-soft);}
+  .timeline-arrow{
+    display:none;
+  }
+  @media (max-width:860px){
+    .timeline{grid-template-columns:1fr 1fr; gap:24px 16px;}
+  }
+  @media (max-width:480px){
+    .timeline{grid-template-columns:1fr;}
+  }
+
+  /* ---------- facility ---------- */
+  .fac-grid{
+    display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:130px; gap:10px; margin-top:60px;
+  }
+  .fac-grid figure{position:relative; overflow:hidden; border-radius:2px;}
+  .fac-grid img{width:100%; height:100%; object-fit:cover; transition:transform .6s ease;}
+  .fac-grid figure:hover img{transform:scale(1.08);}
+  .fac-grid figcaption{
+    position:absolute; left:0; right:0; bottom:0; padding:10px 14px 8px;
+    font-size:.78rem; letter-spacing:.05em; color:#fff;
+    background:linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,0));
+  }
+  .fac-grid .g-a{grid-column:span 3; grid-row:span 3;}
+  .fac-grid .g-b{grid-column:span 3; grid-row:span 2;}
+  .fac-grid .g-c{grid-column:span 2; grid-row:span 2;}
+  .fac-grid .g-d{grid-column:span 2; grid-row:span 2;}
+  .fac-grid .g-e{grid-column:span 2; grid-row:span 2;}
+  .fac-grid .g-f{grid-column:span 3; grid-row:span 2;}
+  @media (max-width:860px){
+    .fac-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:170px;}
+    .fac-grid .g-a,.fac-grid .g-b,.fac-grid .g-c,.fac-grid .g-d,.fac-grid .g-e,.fac-grid .g-f{grid-column:span 1; grid-row:span 2;}
+  }
+
+  .fac-facts{
+    display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:56px;
+  }
+  .fac-facts div{
+    border:1px solid var(--line); padding:16px 26px; text-align:center; min-width:150px;
+    background:var(--white);
+  }
+  .fac-facts strong{
+    display:block; font-family:"Shippori Mincho", serif; font-size:1.3rem; color:var(--brown);
+    margin-bottom:4px;
+  }
+  .fac-facts span{font-size:.8rem; color:var(--ink-soft); letter-spacing:.03em;}
+
+  /* ---------- experience ---------- */
+  .exp-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:60px;
+  }
+  .exp-grid figure{overflow:hidden; border-radius:2px;}
+  .exp-grid .ph{aspect-ratio:3/4; overflow:hidden;}
+  .exp-grid img{width:100%; height:100%; object-fit:cover; transition:transform .6s ease;}
+  .exp-grid figure:hover img{transform:scale(1.06);}
+  .exp-grid figcaption{font-size:.85rem; color:var(--ink-soft); margin-top:10px;}
+  @media (max-width:860px){ .exp-grid{grid-template-columns:1fr 1fr;} }
+
+  /* ---------- scenery ---------- */
+  .scenery-grid{
+    display:grid; grid-template-columns:1.3fr 1fr; gap:18px; margin-top:56px;
+  }
+  .scenery-grid figure{position:relative; overflow:hidden; border-radius:2px;}
+  .scenery-grid .sc-a{aspect-ratio:4/3;}
+  .scenery-grid .sc-b{aspect-ratio:4/3;}
+  .scenery-grid img{width:100%; height:100%; object-fit:cover; transition:transform .6s ease;}
+  .scenery-grid figure:hover img{transform:scale(1.06);}
+  .scenery-grid figcaption{
+    position:absolute; left:0; right:0; bottom:0; padding:14px 18px 12px;
+    font-size:.85rem; letter-spacing:.04em; color:#fff;
+    background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0));
+  }
+  @media (max-width:768px){
+    .scenery-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- for whom ---------- */
+  .whom{
+    position:relative; color:var(--white);
+  }
+  .whom > img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .whom::before{
+    content:""; position:absolute; inset:0; background:rgba(38,30,22,.72);
+  }
+  .whom .wrap{position:relative; z-index:2;}
+  .whom .sec-head p{color:rgba(255,255,255,.82);}
+  .whom .kicker{color:#d9be7c;}
+  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:56px;}
+  .card{
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.25);
+    padding:34px 28px; backdrop-filter:blur(2px);
+  }
+  .card .num{font-family:"Shippori Mincho", serif; font-size:.85rem; color:#d9be7c; letter-spacing:.2em;}
+  .card h3{font-size:1.15rem; margin:14px 0 14px;}
+  .card p{font-size:.9rem; color:rgba(255,255,255,.82);}
+  @media (max-width:860px){ .cards{grid-template-columns:1fr;} }
+
+  .whom-note{
+    max-width:680px; margin:56px auto 0; text-align:center;
+    font-size:.92rem; color:rgba(255,255,255,.85); border-top:1px solid rgba(255,255,255,.25);
+    padding-top:34px;
+  }
+
+  /* ---------- access ---------- */
+  .access-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; margin-top:50px;
+  }
+  .access-grid img{border-radius:2px;}
+  .info-list{list-style:none;}
+  .info-list li{
+    display:flex; gap:22px; padding:18px 0; border-bottom:1px solid var(--line);
+  }
+  .info-list li:first-child{padding-top:0;}
+  .info-list dt{
+    flex:0 0 96px; font-family:"Shippori Mincho", serif; font-size:.85rem; color:var(--brown);
+  }
+  .info-list dd{font-size:.92rem; color:var(--ink-soft);}
+  @media (max-width:860px){ .access-grid{grid-template-columns:1fr;} }
+
+  /* ---------- contact ---------- */
+  .contact-box{
+    max-width:680px; margin:56px auto 0; background:var(--white);
+    border:1px solid var(--line); padding:48px;
+  }
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;}
+  .form-row.full{grid-template-columns:1fr;}
+  label{display:block; font-size:.78rem; letter-spacing:.05em; color:var(--ink-soft); margin-bottom:6px;}
+  input, select, textarea{
+    width:100%; padding:12px 14px; border:1px solid var(--line); background:var(--bg);
+    font-family:inherit; font-size:.92rem; color:var(--ink); border-radius:1px;
+  }
+  textarea{min-height:120px; resize:vertical;}
+  input:focus, select:focus, textarea:focus{outline:1px solid var(--gold);}
+  .submit-row{margin-top:8px; text-align:center;}
+  .submit-btn{
+    background:var(--brown-dark); color:var(--white); border:none; padding:15px 48px;
+    font-size:.85rem; letter-spacing:.15em; cursor:pointer; transition:background .3s ease;
+  }
+  .submit-btn:hover{background:var(--gold);}
+  .contact-note{
+    text-align:center; font-size:.8rem; color:var(--ink-soft); margin-top:22px;
+  }
+  @media (max-width:600px){
+    .contact-box{padding:30px 22px;}
+    .form-row{grid-template-columns:1fr;}
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--brown-dark); color:rgba(255,255,255,.75);
+    padding:56px 0 30px; text-align:center;
+  }
+  footer .logo{color:var(--white); font-size:1.1rem; margin-bottom:10px; display:block;}
+  footer p{font-size:.82rem; margin-bottom:4px;}
+  footer .copyright{margin-top:26px; font-size:.72rem; opacity:.6;}
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <a href="#top" class="logo">八ツ尾山麓庵</a>
+  <nav>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#concept">コンセプト</a></li>
+      <li><a href="#facility">施設</a></li>
+      <li><a href="#experience">過ごし方</a></li>
+      <li><a href="#scenery">景色</a></li>
+      <li><a href="#whom">ご利用シーン</a></li>
+      <li><a href="#access">アクセス</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<section class="hero" id="top">
+  <img src="assets/img/IMG_7989.jpg" alt="八ツ尾山麓庵の外観">
+  <div class="hero-content">
+    <span class="hero-eyebrow">Yatsuo Sanroku-an / Shiga, Taga</span>
+    <h1>八ツ尾山麓庵</h1>
+    <p>滋賀県多賀町・藤瀬。耕作放棄地の開墾から生まれた、里山コミュニティの拠点となる一棟貸しの宿。</p>
+    <a href="#contact" class="btn">お問い合わせ</a>
+  </div>
+  <div class="scroll-cue"></div>
+</section>
+
+<!-- ===================== CONCEPT ===================== -->
+<section id="concept">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Concept</span>
+      <h2>耕作放棄地から、<br class="brk">コミュニティの拠点へ</h2>
+    </div>
+    <div class="lede reveal">
+      <p>すべての始まりは、2025年3月でした。滋賀県犬上郡多賀町・藤瀬地区にある一枚の耕作放棄地を、開墾するところから、八ツ尾山麓庵の物語は始まりました。</p>
+      <p>このままでは、地域の景観が少しずつ崩れていってしまう。そんな危機感から、地域の内外を問わずたくさんの方の力を借りながら、荒れていた田んぼに再び鍬を入れました。</p>
+      <p>田植えをし、稲刈りをし、お米を収穫する。ひとつひとつの作業を、地域の人たちや手伝いに来てくれる人たちと一緒に行う中で、少しずつ「地域コミュニティの再構築」が進んでいきました。</p>
+      <p>そうして生まれた活動を支える交流拠点が、もともと空き家だった一軒の古民家——八ツ尾山麓庵です。</p>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="ph"><img src="assets/img/IMG_5296.jpg" alt="開墾前、耕作放棄地だった藤瀬の田んぼ" loading="lazy"></div>
+        <div class="step">01 — Before</div>
+        <div class="cap">耕作放棄地だった藤瀬の田んぼ</div>
+      </div>
+      <div class="timeline-item">
+        <div class="ph"><img src="assets/img/IMG_7211.jpg" alt="開墾し、整地している様子" loading="lazy"></div>
+        <div class="step">02 — 開墾</div>
+        <div class="cap">仲間と一緒に鍬を入れ、整地</div>
+      </div>
+      <div class="timeline-item">
+        <div class="ph"><img src="assets/img/IMG_8230.jpg" alt="育った稲田の風景" loading="lazy"></div>
+        <div class="step">03 — 稲作</div>
+        <div class="cap">田植えを経て、青々と育つ稲</div>
+      </div>
+      <div class="timeline-item">
+        <div class="ph"><img src="assets/img/IMG_1652.jpg" alt="稲刈りをする参加者たち" loading="lazy"></div>
+        <div class="step">04 — 収穫</div>
+        <div class="cap">みんなで迎える稲刈りの日</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FACILITY ===================== -->
+<section id="facility" class="bg-alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">The House</span>
+      <h2>八ツ尾山麓庵について</h2>
+      <p>もともと空き家だった、趣のある古民家を大切に手を入れました。キッチン・お風呂・トイレ・洗面台は新しく設え、古い梁や広々とした和室の風合いはそのままに——最大10名まで宿泊いただける一棟貸しの宿として整えています。</p>
+    </div>
+
+    <div class="fac-grid reveal">
+      <figure class="g-a">
+        <img src="assets/img/IMG_8386.jpg" alt="大広間の和室" loading="lazy">
+        <figcaption>大広間の和室</figcaption>
+      </figure>
+      <figure class="g-b">
+        <img src="assets/img/IMG_7979.jpg" alt="新しく設えたキッチン" loading="lazy">
+        <figcaption>新設のキッチン</figcaption>
+      </figure>
+      <figure class="g-c">
+        <img src="assets/img/IMG_7938.jpg" alt="お風呂" loading="lazy">
+        <figcaption>浴室</figcaption>
+      </figure>
+      <figure class="g-d">
+        <img src="assets/img/IMG_7931.jpg" alt="洗面台とトイレ" loading="lazy">
+        <figcaption>洗面・トイレ</figcaption>
+      </figure>
+      <figure class="g-e">
+        <img src="assets/img/IMG_7934.jpg" alt="キッチンからダイニングを見る" loading="lazy">
+        <figcaption>ダイニングスペース</figcaption>
+      </figure>
+      <figure class="g-f">
+        <img src="assets/img/IMG_7974.jpg" alt="八ツ尾山麓庵の玄関まわり" loading="lazy">
+        <figcaption>玄関まわり</figcaption>
+      </figure>
+    </div>
+
+    <div class="fac-facts reveal">
+      <div><strong>10名</strong><span>最大宿泊人数</span></div>
+      <div><strong>一棟貸し</strong><span>他のお客様と同席しません</span></div>
+      <div><strong>新設</strong><span>キッチン・浴室・トイレ・洗面台</span></div>
+      <div><strong>古民家</strong><span>梁や和室はそのままに改修</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EXPERIENCE ===================== -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">A Day Here</span>
+      <h2>ここに流れている時間</h2>
+      <p>八ツ尾山麓庵の日々には、いつも誰かの手伝いがあります。田植え、稲刈り、収穫を祝うバーベキュー、収穫したお米でのおにぎりづくり——年齢も立場も違う人たちが、同じ田んぼに立ち、同じ釜の飯を囲んできました。</p>
+    </div>
+
+    <div class="exp-grid reveal">
+      <figure>
+        <div class="ph"><img src="assets/img/302d4a8c39b51631cbe16adc447a351f.jpg" alt="家族で参加した稲刈り" loading="lazy"></div>
+        <figcaption>親子で参加した稲刈り</figcaption>
+      </figure>
+      <figure>
+        <div class="ph"><img src="assets/img/61a512af1d5a901d852bedbc4875bbf6.jpg" alt="収穫したお米でおにぎりづくり" loading="lazy"></div>
+        <figcaption>収穫米でおにぎりづくり</figcaption>
+      </figure>
+      <figure>
+        <div class="ph"><img src="assets/img/87e5a6b800e7b985b75b1f0d12ab9d65.jpg" alt="庵の前で行う交流バーベキュー" loading="lazy"></div>
+        <figcaption>庵の前で交流バーベキュー</figcaption>
+      </figure>
+      <figure>
+        <div class="ph"><img src="assets/img/IMG_9165.jpg" alt="活動に集まったメンバーの集合写真" loading="lazy"></div>
+        <figcaption>藤瀬に集まった仲間たち</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SCENERY ===================== -->
+<section id="scenery" class="bg-alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Scenery</span>
+      <h2>藤瀬に広がる景色</h2>
+      <p>庵のまわりには、水をたたえた田んぼと山並みが広がっています。朝は光を映し、夕方は空を染めて——季節や時間によって、まったく違う表情を見せてくれます。</p>
+    </div>
+    <div class="scenery-grid reveal">
+      <figure class="sc-a">
+        <img src="assets/img/IMG_6225.jpg" alt="晴天に映える藤瀬の田んぼと橋" loading="lazy">
+        <figcaption>水を張った田んぼと里山の朝</figcaption>
+      </figure>
+      <figure class="sc-b">
+        <img src="assets/img/IMG_6200.jpg" alt="田んぼに映る夕焼け" loading="lazy">
+        <figcaption>山際に沈む夕日</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOR WHOM ===================== -->
+<section id="whom" class="whom">
+  <img src="assets/img/IMG_6183.jpg" alt="夕日に染まる藤瀬の田んぼと山並み">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">For You</span>
+      <h2>こんな方に、<br class="brk">使ってほしい場所です</h2>
+      <p>これまで八ツ尾山麓庵は、ご縁のあった方々に口コミで知っていただき、ご利用いただいてきました。これからは、もっと多くの方にこの場所を知っていただきたいと考えています。</p>
+    </div>
+
+    <div class="cards reveal">
+      <div class="card">
+        <span class="num">01</span>
+        <h3>企業研修・<br>チームビルディング</h3>
+        <p>田んぼでの共同作業や古民家での寝食を通じて、部署や役職を越えたチームの結びつきを育む研修拠点として。最大10名での滞在に対応します。</p>
+      </div>
+      <div class="card">
+        <span class="num">02</span>
+        <h3>リトリート・<br>ウェルビーイング合宿</h3>
+        <p>里山の暮らしのリズムに身を置き、心身を整える数日間を。一棟貸しだからこそできる、静かで濃密な時間をご用意できます。</p>
+      </div>
+      <div class="card">
+        <span class="num">03</span>
+        <h3>地域体験・<br>ワーケーション</h3>
+        <p>多賀町の自然と人の営みを間近に感じながら、仕事と暮らしの新しい形を試す拠点として。田植えや稲刈りの時期には、農作業体験も可能です。</p>
+      </div>
+    </div>
+
+    <div class="whom-note reveal">
+      企業研修・リトリート・団体でのご利用のご相談は、下記お問い合わせフォームより承っております。ご要望に応じて、農作業体験や交流会の企画もご相談いただけます。
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ACCESS ===================== -->
+<section id="access" class="bg-alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Access</span>
+      <h2>アクセス</h2>
+    </div>
+    <div class="access-grid reveal">
+      <img src="assets/img/IMG_8241.jpg" alt="藤瀬地区の畑と山の風景" loading="lazy">
+      <dl class="info-list">
+        <li>
+          <dt>所在地</dt>
+          <dd>滋賀県犬上郡多賀町 藤瀬地区<br>※詳しい住所はお問い合わせ時にご案内いたします。</dd>
+        </li>
+        <li>
+          <dt>周辺環境</dt>
+          <dd>多賀大社で知られる、鈴鹿山系の山あいの町・多賀町。田園と里山の風景が広がるエリアです。</dd>
+        </li>
+        <li>
+          <dt>アクセス</dt>
+          <dd>名神高速道路・近江鉄道多賀線など、複数のルートでお越しいただけます。詳細なアクセス方法はお問い合わせください。</dd>
+        </li>
+        <li>
+          <dt>定員</dt>
+          <dd>最大10名まで宿泊可能(一棟貸し)</dd>
+        </li>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Contact</span>
+      <h2>お問い合わせ</h2>
+      <p>ご宿泊・企業研修・リトリートなどのご相談は、下記フォームよりお気軽にお問い合わせください。内容を確認のうえ、担当より折り返しご連絡いたします。</p>
+    </div>
+
+    <form class="contact-box reveal" id="contactForm">
+      <div class="form-row">
+        <div>
+          <label for="name">お名前 <span aria-hidden="true">*</span></label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="org">ご所属(会社名・団体名)</label>
+          <input type="text" id="org" name="org">
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label for="email">メールアドレス <span aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="purpose">ご用件</label>
+          <select id="purpose" name="purpose">
+            <option>ご宿泊のご相談</option>
+            <option>企業研修について</option>
+            <option>リトリート・合宿について</option>
+            <option>地域活動・農作業体験について</option>
+            <option>その他</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div>
+          <label for="message">メッセージ</label>
+          <textarea id="message" name="message" placeholder="ご希望の日程や人数、ご相談内容などをご記入ください"></textarea>
+        </div>
+      </div>
+      <div class="submit-row">
+        <button type="submit" class="submit-btn">送信する</button>
+      </div>
+      <p class="contact-note">※ このフォームは準備中です。送信機能を有効にするには、送信先メールアドレスの設定が必要です。</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="logo">八ツ尾山麓庵</span>
+    <p>滋賀県犬上郡多賀町 藤瀬地区</p>
+    <p class="copyright">&copy; 2026 Yatsuo Sanroku-an</p>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  const navLinks = document.getElementById('navLinks');
+  const navToggle = document.getElementById('navToggle');
+
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  document.getElementById('contactForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('お問い合わせありがとうございます。\n\n※このフォームはまだ送信設定が完了していません。設定完了までは、お手数ですが直接ご連絡ください。');
+  });
+</script>
+
+</body>
+</html>
