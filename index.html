@@ -201,7 +201,8 @@
     display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:56px;
   }
   .fac-facts div{
-    border:1px solid var(--line); padding:16px 26px; text-align:center; min-width:150px;
+    border:1px solid var(--line); padding:16px 26px; text-align:center;
+    width:150px; flex:0 0 150px;
     background:var(--white);
   }
   .fac-facts strong{
@@ -252,11 +253,11 @@
   .whom .kicker{color:#d9be7c;}
   .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:56px;}
   .card{
-    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.25);
+    background:rgba(20,15,10,.45); border:1px solid rgba(255,255,255,.25);
     padding:34px 28px; backdrop-filter:blur(2px);
   }
   .card .num{font-family:"Shippori Mincho", serif; font-size:.85rem; color:#d9be7c; letter-spacing:.2em;}
-  .card h3{font-size:1.15rem; margin:14px 0 14px;}
+  .card h3{font-size:1.15rem; margin:14px 0 14px; text-shadow:0 1px 10px rgba(0,0,0,.6);}
   .card p{font-size:.9rem; color:rgba(255,255,255,.82);}
   @media (max-width:860px){ .cards{grid-template-columns:1fr;} }
 
@@ -426,6 +427,18 @@
       <figure class="g-f">
         <img src="assets/img/IMG_7974.jpg" alt="八ツ尾山麓庵の玄関まわり" loading="lazy">
         <figcaption>玄関まわり</figcaption>
+      </figure>
+      <figure class="g-c">
+        <img src="assets/img/room-tatami.jpg" alt="和室の客室、ベッドと障子窓" loading="lazy">
+        <figcaption>和室の客室</figcaption>
+      </figure>
+      <figure class="g-d">
+        <img src="assets/img/IMG_8381.jpg" alt="ツインベッドの客室" loading="lazy">
+        <figcaption>ツインベッドの客室</figcaption>
+      </figure>
+      <figure class="g-f">
+        <img src="assets/img/room-view.jpg" alt="客室の窓から見える里山の景色" loading="lazy">
+        <figcaption>客室からの眺め</figcaption>
       </figure>
     </div>
 
